@@ -1,7 +1,10 @@
 {
-  "name": "e-react-demo",
+  "name": "epc",
+  "author": "lazyliang",
   "version": "0.1.0",
+  "description": "a sample electron",
   "private": true,
+  "icon":"public/icon/tangerine.png",
   "main": "main.js",
   "homepage": ".",
   "dependencies": {
@@ -9,6 +12,7 @@
     "antd": "^3.1.6",
     "babel-plugin-import": "^1.4.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "bcrypt": "^3.0.7",
     "browserify-fs": "^1.0.0",
     "customize-cra": "^0.9.1",
     "electron-is-dev": "^1.1.0",
@@ -17,6 +21,7 @@
     "mobx": "^3.3.1",
     "mobx-react": "^4.3.3",
     "nedb": "^1.8.0",
+    "node-gyp": "^6.0.1",
     "react": "^16.2.0",
     "react-app-rewire-less": "^2.1.0",
     "react-app-rewired": "^1.5.0",
@@ -27,32 +32,22 @@
     "react-scripts": "1.0.12"
   },
   "scripts": {
-    "package": "yarn build && electron-builder -c.extraMetadata.main=main.js --win --x64",
+    "win": "yarn build && electron-builder -c.extraMetadata.main=main.js --win --x64",
     "dev": "concurrently \"yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "electron": "electron .",
+    "mac": "yarn build && electron-builder -c.extraMetadata.main=main.js --mac",
     "start": "react-app-rewired  start",
     "build": "react-app-rewired  build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test1": "electron-builder"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "concurrently": "^5.0.0",
-    "electron": "^7.1.2",
+    "electron": "^4.2.8",
     "electron-builder": "^21.2.0",
     "wait-on": "^3.3.0"
   },
@@ -62,10 +57,18 @@
       "build/**/*",
       "node_modules/**/*",
       "public/**/*",
-      "main.js"
+      "main.js",
+      "path/**/*",
+      "package.json",
+      "components/**",
+      "photo/**"
     ],
+    "mac": {
+      "icon": "public/icon/tangerine.png"
+    },
+    "asar": false,
     "directories": {
-      "buildResources": "assets"
+      "output": "dist"
     }
   },
   "parserOptions": {

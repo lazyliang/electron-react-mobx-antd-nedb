@@ -1,13 +1,16 @@
-const electron = require('electron');
-const app = electron.app;
+const main = require('electron');
+const app = main.app;
 const {BrowserWindow }= require('electron');
 
 const path = require('path');
 
 const isDev = require('electron-is-dev');
 var Datastore = require('nedb')
-    , db = new Datastore({ filename: 'path/to/datafile' });
-db.loadDatabase(function (err) {    // Callback is optional
+    , db = new Datastore({ filename:
+        path.join(__dirname,'public/datafile') });
+console.log(__dirname)
+db.loadDatabase(function (err) {
+    // Callback is optional
     // Now commands will be executed
 });
 global.collDb = db
@@ -24,6 +27,7 @@ function createWindow() {
 
       }}
       );
+
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file:///${path.join(__dirname, './build/index.html')}`);
     mainWindow.webContents.openDevTools()
   mainWindow.on('closed', () => mainWindow = null);
