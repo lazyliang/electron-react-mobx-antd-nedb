@@ -1,4 +1,4 @@
-这个项目是一个electron 样例项目，集成了 react、mobx、antd、nedb。
+这是一个electron demo项目，集成了 react、mobx、antd、nedb。
 
 具体命令：
 
@@ -21,7 +21,7 @@
       
       
       
-This project is an electron sample project that integrates react, mobx, antd and nedb.
+This is an electron sample project that integrates react, mobx, antd and nedb.
 
 Specific orders:
 
